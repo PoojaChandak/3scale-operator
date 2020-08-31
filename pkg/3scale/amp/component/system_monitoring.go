@@ -30,6 +30,37 @@ func (system *System) SystemSidekiqPodMonitor() *monitoringv1.PodMonitor {
 	}
 }
 
+func (system *System) SystemAppPodMonitor() *monitoringv1.PodMonitor {
+	return &monitoringv1.PodMonitor{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:   "system-app",
+			Labels: system.Options.CommonSidekiqLabels,
+		},
+		Spec: monitoringv1.PodMonitorSpec{
+			PodMetricsEndpoints: []monitoringv1.PodMetricsEndpoint{
+				{
+					Port:   "masterMetrics",
+					Path:   "/metrics",
+					Scheme: "http",
+				},
+				{
+					Port:   "providerMetrics",
+					Path:   "/metrics",
+					Scheme: "http",
+				},
+				{
+					Port:   "developerMetrics",
+					Path:   "/metrics",
+					Scheme: "http",
+				},
+			},
+			Selector: metav1.LabelSelector{
+				MatchLabels: system.Options.CommonAppLabels,
+			},
+		},
+	}
+}
+
 func SystemGrafanaDashboard(ns string) *grafanav1alpha1.GrafanaDashboard {
 	data := &struct {
 		Namespace string
