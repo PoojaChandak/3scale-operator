@@ -1281,7 +1281,7 @@ func (system *System) appMasterPorts() []v1.ContainerPort {
 	ports = append(ports, v1.ContainerPort{Name: "master", HostPort: 0, ContainerPort: 3002, Protocol: v1.ProtocolTCP})
 
 	if system.Options.AppMetrics {
-		ports = append(ports, v1.ContainerPort{Name: "metrics", ContainerPort: SystemAppMasterContainerPrometheusPort, Protocol: v1.ProtocolTCP})
+		ports = append(ports, v1.ContainerPort{Name: "masterMetrics", ContainerPort: SystemAppMasterContainerPrometheusPort, Protocol: v1.ProtocolTCP})
 	}
 
 	return ports
@@ -1293,7 +1293,7 @@ func (system *System) appProviderPorts() []v1.ContainerPort {
 	ports = append(ports, v1.ContainerPort{Name: "provider", HostPort: 0, ContainerPort: 3000, Protocol: v1.ProtocolTCP})
 
 	if system.Options.AppMetrics {
-		ports = append(ports, v1.ContainerPort{Name: "metrics", ContainerPort: SystemAppProviderContainerPrometheusPort, Protocol: v1.ProtocolTCP})
+		ports = append(ports, v1.ContainerPort{Name: "providerMetrics", ContainerPort: SystemAppProviderContainerPrometheusPort, Protocol: v1.ProtocolTCP})
 	}
 
 	return ports
@@ -1305,7 +1305,7 @@ func (system *System) appDeveloperPorts() []v1.ContainerPort {
 	ports = append(ports, v1.ContainerPort{Name: "developer", HostPort: 0, ContainerPort: 3001, Protocol: v1.ProtocolTCP})
 
 	if system.Options.AppMetrics {
-		ports = append(ports, v1.ContainerPort{Name: "metrics", ContainerPort: SystemAppDeveloperContainerPrometheusPort, Protocol: v1.ProtocolTCP})
+		ports = append(ports, v1.ContainerPort{Name: "developerMetrics", ContainerPort: SystemAppDeveloperContainerPrometheusPort, Protocol: v1.ProtocolTCP})
 	}
 
 	return ports
