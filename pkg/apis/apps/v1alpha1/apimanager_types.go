@@ -342,6 +342,12 @@ type SystemRedisPersistentVolumeClaimSpec struct {
 type SystemPVCSpec struct {
 	// +optional
 	StorageClassName *string `json:"storageClassName,omitempty"`
+	// Ignored when VolumeName field is set
+	// +optional
+	Resources *PersistentVolumeClaimResources `json:"resources,omitempty"`
+	// Name of an existing PersistentVolume to be bound to the
+	// +optional
+	VolumeName *string `json:"volumeName,omitempty"`
 }
 
 type DeprecatedSystemS3Spec struct {
@@ -396,6 +402,12 @@ type SystemPostgreSQLSpec struct {
 type SystemMySQLPVCSpec struct {
 	// +optional
 	StorageClassName *string `json:"storageClassName,omitempty"`
+	// Ignored when VolumeName field is set
+	// +optional
+	Resources *PersistentVolumeClaimResources `json:"resources,omitempty"`
+	// Name of an existing PersistentVolume to be bound to the
+	// +optional
+	VolumeName *string `json:"volumeName,omitempty"`
 }
 
 type SystemPostgreSQLPVCSpec struct {
@@ -405,6 +417,12 @@ type SystemPostgreSQLPVCSpec struct {
 	Affinity *v1.Affinity `json:"affinity,omitempty"`
 	// +optional
 	Tolerations []v1.Toleration `json:"tolerations,omitempty"`
+	// Ignored when VolumeName field is set
+	// +optional
+	Resources *PersistentVolumeClaimResources `json:"resources,omitempty"`
+	// Name of an existing PersistentVolume to be bound to the
+	// +optional
+	VolumeName *string `json:"volumeName,omitempty"`
 }
 
 type ZyncSpec struct {
