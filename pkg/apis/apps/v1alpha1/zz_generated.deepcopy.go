@@ -1045,6 +1045,16 @@ func (in *SystemMySQLPVCSpec) DeepCopyInto(out *SystemMySQLPVCSpec) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Resources != nil {
+		in, out := &in.Resources, &out.Resources
+		*out = new(PersistentVolumeClaimResources)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.VolumeName != nil {
+		in, out := &in.VolumeName, &out.VolumeName
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
@@ -1109,6 +1119,16 @@ func (in *SystemPVCSpec) DeepCopyInto(out *SystemPVCSpec) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Resources != nil {
+		in, out := &in.Resources, &out.Resources
+		*out = new(PersistentVolumeClaimResources)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.VolumeName != nil {
+		in, out := &in.VolumeName, &out.VolumeName
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 
@@ -1141,6 +1161,16 @@ func (in *SystemPostgreSQLPVCSpec) DeepCopyInto(out *SystemPostgreSQLPVCSpec) {
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.Resources != nil {
+		in, out := &in.Resources, &out.Resources
+		*out = new(PersistentVolumeClaimResources)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.VolumeName != nil {
+		in, out := &in.VolumeName, &out.VolumeName
+		*out = new(string)
+		**out = **in
 	}
 	return
 }
